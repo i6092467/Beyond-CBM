@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+eval "$(conda shell.bash hook)"
+
+# Needed for deterministic computations
+export CUBLAS_WORKSPACE_CONFIG=":4096:8"
+
+conda activate intervenable-models
+
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 42
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 73
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 666
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 777
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 1009
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 1279
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 1597
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 1811
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 1949
+python ../train.py --config ../configs/config_synthetic_black_box.yaml --seed 2053

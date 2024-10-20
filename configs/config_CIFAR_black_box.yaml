@@ -1,0 +1,55 @@
+# An example configuration file for training a black-box classifier on CIFAR-10
+
+# --------------------------
+#         Experiment
+# --------------------------
+experiment_name: 'black-box-CIFAR'                 # name of the experiment
+run_name: 'seeds'                                  # name of the run
+seed: 42                                           # random generator seed
+device: 'cuda'                                     # device to use for PyTorch: 'cpu' or 'cuda'
+workers: 2                                         # number of worker processes
+# TODO: specify relevant directories below
+log_directory: ...                                 # directory for saving logs and model checkpoints
+model_directory: './pretrained_networks/resnet/'   # directory with pretrained networks, s.a. ResNet-18
+
+suppress_warnings: True
+
+# --------------------------
+#         Dataset
+# --------------------------
+dataset: 'CIFAR10'                                # name of the dataset
+# TODO: specify relevant directories
+data_path: ...
+num_classes: 10                                   # number of the classes of the target variable
+num_concepts: 143                                 # number of the concept variables
+
+# --------------------------
+#         Model
+# --------------------------
+model: 'black-box'                                # model's name
+encoder_arch: 'resnet18'                          # encoder architecture
+num_hidden_z: 256
+num_hidden_y: 256
+act_z: 'ReLU'
+head_arch: 'FCNN'
+emb_size: 1024                                    # size of the embedding layer after the Stable Diffusion backbone
+
+concatenation: False                              #  fine-tuning black box by concatenating concepts and zs
+# --------------------------
+#         Training
+# --------------------------
+num_epochs: 300                                   # number of training epochs in the joint optimization
+j_learning_rate: 0.0001                           # learning rate in the joint optimization
+
+train_batch_size: 64                              # batch size for the training set
+val_batch_size: 64                                # batch size for the validation and test sets
+
+validate_per_epoch: 30                            # periodicity to evaluate the model
+pth_store_frequency: 50                           # periodicity to save model checkpoints
+
+optimizer: 'adam'                                 # optimizer: 'sgd' or 'adam'
+
+decrease_every: 150                               # frequency of the learning rate decrease
+lr_divisor: 2                                     # rate of the learning rate decrease
+
+weight_decay: 0                                   # weight decay
