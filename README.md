@@ -23,7 +23,6 @@ conda activate intervenable-models    # activate environment
 - `./utils` contains complimentary functions used to evaluate and train the models
 - `./datasets` contains the data loaders for all datasets and the processing scripts to generate synthetic data, modified chest X-rays files, compute CLIP and Stable Diffusion embeddings for CIFAR-10, ImageNet and Animals with Attributes and extract VLM-based concept annotations
 - `./configs` contains example configuration files for training black-box and CBM classifiers, the data paths need to be modified accordingly
--`./pretrained_networks` contains the checkpoints to the studied backbones, ResNet and Inception
 Further details are documented in code. 
 -`./bin` contains sample shell scripts to run experiments on a GPU and reproduce our results
 
